@@ -1,17 +1,208 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>KTP VirgIE - Official Style</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Roboto Condensed', 'Courier New', monospace;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+        .ktp {
+            width: 620px;
+            height: 390px;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255,20,147,0.1) 0%, transparent 50%),
+                linear-gradient(145deg, #FFE4E1 0%, #F5DEB3 20%, #FFF8DC 50%, #F0F8FF 80%, #E6E6FA 100%);
+            border-radius: 15px;
+            box-shadow: 
+                0 20px 60px rgba(0,0,0,0.5),
+                inset 0 1px 0 rgba(255,255,255,0.9),
+                inset 0 -1px 0 rgba(0,0,0,0.1);
+            position: relative;
+            border: 3px solid #C0C0C0;
+            overflow: hidden;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            0% { box-shadow: 0 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.9); }
+            100% { box-shadow: 0 25px 80px rgba(255,20,147,0.3), inset 0 1px 0 rgba(255,255,255,1); }
+        }
+        /* Emblem Garuda RI */
+        .emblem {
+            position: absolute;
+            top: 8px;
+            left: 20px;
+            width: 35px;
+            height: 35px;
+            background: radial-gradient(circle, #FF0000 40%, #000080 60%);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-15deg);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .emblem::after {
+            content: '🇮🇩';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(15deg);
+            font-size: 16px;
+        }
+        .header {
+            position: absolute;
+            top: 20px;
+            left: 70px;
+            right: 20px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 700;
+            color: #8B0000;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+            letter-spacing: 1px;
+        }
+        .header .subtitle {
+            font-size: 11px;
+            margin-top: 2px;
+            font-weight: 400;
+        }
+        .photo {
+            position: absolute;
+            left: 25px;
+            top: 65px;
+            width: 105px;
+            height: 135px;
+            object-fit: cover;
+            border: 3px solid #8B4513;
+            border-radius: 6px;
+            background: linear-gradient(45deg, #F5F5DC, #D2B48C);
+            box-shadow: 
+                0 4px 12px rgba(0,0,0,0.4),
+                inset 0 1px 0 rgba(255,255,255,0.6);
+        }
+        .data {
+            position: absolute;
+            left: 155px;
+            top: 65px;
+            right: 25px;
+            height: 255px;
+            font-size: 10.5px;
+            line-height: 1.15;
+            color: #000;
+            overflow: hidden;
+        }
+        .row {
+            display: flex;
+            margin-bottom: 1.5px;
+        }
+        .label {
+            min-width: 85px;
+            font-weight: 700;
+            color: #B22222;
+            font-size: 9.5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .value {
+            flex: 1;
+            font-size: 10.5px;
+            border-bottom: 0.5px solid rgba(139,0,0,0.4);
+            padding-bottom: 0.5px;
+            font-family: monospace;
+        }
+        .barcode {
+            position: absolute;
+            bottom: 25px;
+            left: 25px;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            letter-spacing: 1.2px;
+            color: #333;
+            text-shadow: 0 1px 1px rgba(255,255,255,0.5);
+        }
+        .signature {
+            position: absolute;
+            bottom: 25px;
+            right: 25px;
+            font-size: 9px;
+            color: #666;
+            font-style: italic;
+            transform: rotate(-2deg);
+        }
+        .validity {
+            position: absolute;
+            bottom: 8px;
+            right: 25px;
+            font-size: 9px;
+            color: #8B0000;
+            font-weight: bold;
+        }
+        @media (max-width: 700px) {
+            .ktp { 
+                width: 95vw; 
+                height: 60vw;
+                max-height: 390px;
+                max-width: 620px;
+            }
+            .photo { width: 16vw; height: 21vw; }
+        }
+        .ktp::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255,255,255,0.03) 2px,
+                    rgba(255,255,255,0.03) 4px
+                );
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body>
-    <h1 class="hello">NAMA : VIRGIE TEMANNYA BANI</h1>
-    <h2 class="hello">PRODI : INFORMATIKA</h2>
-    <h3 class="hello">SELAMAT PAGI</h3>
-
-    <img src="ALBIJI.jpg" alt="Foto Bani" width="300">
-    <h4 class="hello">JANGAN LUPA SENYUM ROSBLOK</h4>
-    
+    <div class="ktp">
+        <div class="emblem"></div>
+        
+        <div class="header">
+            KARTU ORANG DALAM PENCARIAN
+            <div class="subtitle">E-KODP Elektronik</div>
+        </div>
+        
+        <img src="https://raw.githubusercontent.com/jakkasigma/PRAKTIKUM_PW/refs/heads/main/ALBIJI.jpg" alt="Foto KTP" class="photo">
+        
+        <div class="data">
+            <div class="row"><span class="label">NIK</span><span class="value">3571234567890001</span></div>
+            <div class="row"><span class="label">Nama</span><span class="value">VIRGIE TEMANNYA BANI</span></div>
+            <div class="row"><span class="label">TTL</span><span class="value">Yogyakarta, 01-01-2000</span></div>
+            <div class="row"><span class="label">Pekerjaan</span><span class="value">PEMBALAP</span></div>
+            <div class="row"><span class="label">Alamat</span><span class="value">Ngadisuryan KT1 No. 66 RT 001/001</span></div>
+            <div class="row"><span class="label">Kelurahan</span><span class="value">Patehan</span></div>
+            <div class="row"><span class="label">Kecamatan</span><span class="value">Kraton</span></div>
+            <div class="row"><span class="label">Kabupaten</span><span class="value">Kota Yogyakaarta</span></div>
+            <div class="row"><span class="label">Provinsi</span><span class="value">D.I. Yogyakarta</span></div>
+            <div class="row"><span class="label">Agama</span><span class="value">Islam</span></div>
+            <div class="row"><span class="label">Golongan Darah</span><span class="value">-</span></div>
+            <div class="row"><span class="label">Jenis Kelamin</span><span class="value">Sepertinya Laki-laki</span></div>
+            <div class="row"><span class="label">Prodi/NIM</span><span class="value">Informatika/241110092</span></div>
+        </div>
+        
+        <div class="barcode"> barcode: ||||| |||| ||| || |||||| || || || |||| |||</div>
+        <div class="signature">Kepala Dinas Kependudukan</div>
+        <div class="validity">BERLAKU SEUMUR HIDUP</div>
+    </div>
 </body>
 </html>
