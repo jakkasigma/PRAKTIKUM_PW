@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental</title>
+    <link rel="stylesheet" href="stlyee.css">
+</head>
+
+<body>
+    <div id="search">
+        <div class="title">
+            <h1>Car Rental</h1>
+            <p>Find the perfect car for your next adventure</p>
+            <hr>
+        </div>
+        <div class="form-container">
+            <div class="form-group">
+                <label for="pickup">Rental Location:</label>
+                <select id="pickup" name="pickup">
+                    <option value="">Select Location</option>
+                    <option value="location1">Yogyakarta</option>
+                    <option value="location2">Bali</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="pickup-date">Rental Start Date:</label>
+                <input type="date" id="pickup-date" name="pickup-date">
+            </div>
+            <div class="form-group">
+                <label for="return-date">Rental End Date:</label>
+                <input type="date" id="return-date" name="return-date">
+            </div>
+            <button type="submit">Search</button>
+        </div>
+    </div>
+
+    <div class="car-list">
+        <h2>Premium Fleet</h2>
+        <div class="car-item">
+            <div class="image-wrapper">
+                <img src="https://i.pinimg.com/1200x/e4/36/a7/e436a705e3ff3165d1fc943ef0cbb629.jpg" alt="Porsche 911">
+            </div>
+            <div class="car-info">
+                <h3>Porsche 911 Turbo S</h3>
+                <p>Experience the thrill of a classic sports car with unmatched performance and luxury.</p>
+                <div class="car-footer">
+                    <div class="price">$350<span>/day</span></div>
+                    <button class="btn-book">Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="car-item">
+            <div class="image-wrapper">
+                <img src="https://i.pinimg.com/1200x/12/65/b3/1265b3fcbb7c43e91c5f5bad92db8ddb.jpg" alt="Ferrari SF90">
+            </div>
+            <div class="car-info">
+                <h3>Ferrari SF90</h3>
+                <p>Supercar blending hybrid technology with breathtaking speed and striking Italian design.</p>
+                <div class="car-footer">
+                    <div class="price">$500<span>/day</span></div>
+                    <button class="btn-book">Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="car-item">
+            <div class="image-wrapper">
+                <img src="https://i.pinimg.com/736x/65/44/a8/6544a8858e304cf22051c35a5856f06a.jpg" alt="Lamborghini Huracan">
+            </div>
+            <div class="car-info">
+                <h3>Lamborghini Huracan EVO</h3>
+                <p>A masterpiece of engineering, offering raw power, dynamic handling, and aggressive styling.</p>
+                <div class="car-footer">
+                    <div class="price">$450<span>/day</span></div>
+                    <button class="btn-book">Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="car-item">
+            <div class="image-wrapper">
+                <img src="https://i.pinimg.com/736x/f2/a1/09/f2a109acf90577611b2393f13090036b.jpg" alt="BMW i4">
+            </div>
+            <div class="car-info">
+                <h3>BMW i4</h3>
+                <p>All-electric Gran Coupe delivering emission-free driving without compromising on comfort.</p>
+                <div class="car-footer">
+                    <div class="price">$150<span>/day</span></div>
+                    <button class="btn-book">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

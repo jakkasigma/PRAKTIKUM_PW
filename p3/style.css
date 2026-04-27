@@ -1,0 +1,12 @@
+        body{
+            background-color: blueviolet;
+        }
+        h2{
+            color: darkgreen;
+        }
+        p{
+            color: darkorange;
+        }
+        .kembang{
+            filter: drop-shadow(10px 10px 10px rgb(108, 234, 4));
+        }
