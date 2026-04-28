@@ -1,0 +1,223 @@
+/* Mengambil font Outfit dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* Variabel warna agar mudah dipakai ulang */
+:root {
+    --bg-main: #050507;          /* warna background utama */
+    --bg-secondary: #0f1115;     /* warna card */
+    --text-main: #ffffff;        /* warna teks utama */
+    --text-muted: #9ca3af;       /* warna teks abu */
+    --accent: #3b82f6;           /* warna biru utama */
+    --accent-hover: #2563eb;     /* warna hover */
+}
+
+/* Reset default browser */
+* {
+    box-sizing: border-box;      /* padding tidak menambah ukuran */
+    margin: 0;                   /* hapus margin bawaan */
+    padding: 0;                  /* hapus padding bawaan */
+}
+
+/* Style body utama */
+body {
+    font-family: 'Outfit', sans-serif;      /* font utama */
+    background-color: var(--bg-main);       /* warna background */
+    color: var(--text-main);                /* warna teks */
+    min-height: 100vh;                      /* minimal setinggi layar */
+    overflow-x: hidden;                     /* cegah scroll horizontal */
+}
+
+/* Hero section */
+#search {
+    position: relative;
+    width: 100%;
+    height: 70vh;                           /* tinggi 70% layar */
+    min-height: 500px;
+    background-image: url("gambar.jpg");   /* gambar background */
+    background-size: cover;                 /* gambar memenuhi area */
+    background-position: center;            /* posisi tengah */
+    display: flex;
+    justify-content: center;                /* tengah horizontal */
+    align-items: center;                    /* tengah vertikal */
+    flex-direction: column;                 /* isi tersusun vertikal */
+}
+
+/* Layer gelap di atas gambar */
+#search::before {
+    content: '';
+    position: absolute;
+    inset: 0;                               /* isi penuh */
+    background: linear-gradient(to bottom,
+        rgba(5,5,7,0.4),
+        rgba(5,5,7,1));                     /* gradasi gelap */
+}
+
+/* Judul */
+.title {
+    position: relative;
+    z-index: 2;                             /* di atas overlay */
+    text-align: center;
+}
+
+.title h1 {
+    font-size: clamp(3rem, 6vw, 5.5rem);    /* ukuran responsif */
+    font-weight: 700;
+    background: linear-gradient(to right, #fff, #93c5fd);
+    -webkit-background-clip: text;          /* gradient hanya pada teks */
+    -webkit-text-fill-color: transparent;   /* isi teks transparan */
+}
+
+.title p {
+    font-size: 1.2rem;
+    color: #cbd5e1;
+}
+
+/* Form search */
+.form-container {
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    display: flex;                          /* sejajar horizontal */
+    gap: 1rem;                              /* jarak antar item */
+    z-index: 3;
+}
+
+/* Tiap group input */
+.form-group {
+    display: flex;
+    flex-direction: column;                 /* label di atas input */
+    gap: 0.3rem;
+}
+
+.form-container label {
+    font-size: 0.75rem;
+    color: white;
+}
+
+/* Input dan select */
+.form-container input,
+.form-container select {
+    background: rgba(255,255,255,0.05);     /* transparan */
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    padding: 0.7rem 1rem;
+    border-radius: 12px;                    /* sudut membulat */
+    min-width: 200px;
+}
+
+/* Saat diklik */
+.form-container input:focus,
+.form-container select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+    outline: none;
+}
+
+/* Tombol */
+.form-container button {
+    padding: 0 2rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+/* Hover tombol */
+.form-container button:hover {
+    background: var(--accent-hover);
+}
+
+/* Daftar mobil */
+.car-list {
+    max-width: 1400px;
+    margin: -40px auto 5rem;
+    padding: 0 2rem;
+    display: grid;                                      /* pakai grid */
+    grid-template-columns: repeat(auto-fit,
+        minmax(320px, 1fr));                            /* responsif */
+    gap: 2rem;
+}
+
+/* Card mobil */
+.car-item {
+    background: var(--bg-secondary);
+    border-radius: 28px;
+    overflow: hidden;                                  /* gambar ikut rapi */
+    transition: 0.4s;
+}
+
+/* Hover card */
+.car-item:hover {
+    transform: translateY(-10px);                      /* naik */
+}
+
+/* Gambar mobil */
+.image-wrapper {
+    height: 250px;
+    overflow: hidden;
+}
+
+.car-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;                                 /* gambar proporsional */
+    transition: 0.5s;
+}
+
+/* Zoom gambar saat hover */
+.car-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Info card */
+.car-info {
+    padding: 2rem;
+}
+
+.car-info h3 {
+    font-size: 1.5rem;
+}
+
+.car-info p {
+    color: var(--text-muted);
+    margin: 1rem 0;
+}
+
+/* Footer card */
+.car-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Harga */
+.price {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Tombol booking */
+.btn-book {
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: transparent;
+    color: white;
+}
+
+/* Responsive mobile */
+@media (max-width: 850px) {
+    .form-container {
+        position: relative;
+        flex-direction: column;      /* jadi vertikal */
+        width: 90%;
+        margin: auto;
+    }
+
+    .form-container input,
+    .form-container select,
+    .form-container button {
+        width: 100%;
+    }
+}
