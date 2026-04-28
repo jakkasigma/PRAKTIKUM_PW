@@ -4,50 +4,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Rental</title>
+    <title>JakksCar Rental</title>
     <link rel="stylesheet" href="stlyee.css">
 </head>
 
 <body>
+    <nav class="navbar">
+        <div class="logo">
+            <h2>Jakks<span>Car</span></h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="active">Beranda</a></li>
+            <li><a href="#fleet">Armada</a></li>
+            <li><a href="#about">Tentang Kami</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="btn-login">Masuk</button>
+        </div>
+    </nav>
     <div id="search">
         <div class="title">
-            <h1>Car Rental</h1>
-            <p>Find the perfect car for your next adventure</p>
+            <h1>JakksCar Rental</h1>
+            <p>Temukan mobil yang sempurna untuk petualangan Anda selanjutnya</p>
             <hr>
         </div>
         <div class="form-container">
             <div class="form-group">
-                <label for="pickup">Rental Location:</label>
+                <label for="pickup">Lokasi Pengambilan:</label>
                 <select id="pickup" name="pickup">
-                    <option value="">Select Location</option>
+                    <option value="">Pilih Lokasi</option>
                     <option value="location1">Yogyakarta</option>
                     <option value="location2">Bali</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="pickup-date">Rental Start Date:</label>
+                <label for="pickup-date">Tanggal Pengambilan:</label>
                 <input type="date" id="pickup-date" name="pickup-date">
             </div>
             <div class="form-group">
-                <label for="return-date">Rental End Date:</label>
+                <label for="return-date">Tanggal Pengembalian:</label>
                 <input type="date" id="return-date" name="return-date">
             </div>
-            <button type="submit">Search</button>
+            <button type="submit">Cari Mobil</button>
         </div>
     </div>
 
-    <div class="car-list">
-        <h2>Premium Fleet</h2>
+    <div id="fleet" class="car-list">
+        <h2>Armada Premium Kami</h2>
         <div class="car-item">
             <div class="image-wrapper">
                 <img src="https://i.pinimg.com/1200x/e4/36/a7/e436a705e3ff3165d1fc943ef0cbb629.jpg" alt="Porsche 911">
             </div>
             <div class="car-info">
                 <h3>Porsche 911 Turbo S</h3>
-                <p>Experience the thrill of a classic sports car with unmatched performance and luxury.</p>
+                <p>Rasakan sensasi mobil sport klasik dengan performa dan kemewahan yang tak tertandingi.</p>
                 <div class="car-footer">
-                    <div class="price">$350<span>/day</span></div>
-                    <button class="btn-book">Book Now</button>
+                    <div class="price">Rp 5.000.000<span>/hari</span></div>
+                    <button class="btn-book">Boking</button>
                 </div>
             </div>
         </div>
@@ -57,10 +71,10 @@
             </div>
             <div class="car-info">
                 <h3>Ferrari SF90</h3>
-                <p>Supercar blending hybrid technology with breathtaking speed and striking Italian design.</p>
+                <p>Supercar yang memadukan teknologi hybrid dengan kecepatan luar biasa dan desain khas Italia.</p>
                 <div class="car-footer">
-                    <div class="price">$500<span>/day</span></div>
-                    <button class="btn-book">Book Now</button>
+                    <div class="price">Rp 8.500.000<span>/hari</span></div>
+                    <button class="btn-book">Boking</button>
                 </div>
             </div>
         </div>
@@ -70,10 +84,10 @@
             </div>
             <div class="car-info">
                 <h3>Lamborghini Huracan EVO</h3>
-                <p>A masterpiece of engineering, offering raw power, dynamic handling, and aggressive styling.</p>
+                <p>Mahakarya teknik otomotif yang menawarkan tenaga mesin V10 beringas dan desain agresif.</p>
                 <div class="car-footer">
-                    <div class="price">$450<span>/day</span></div>
-                    <button class="btn-book">Book Now</button>
+                    <div class="price">Rp 7.000.000<span>/hari</span></div>
+                    <button class="btn-book">Boking</button>
                 </div>
             </div>
         </div>
@@ -83,14 +97,61 @@
             </div>
             <div class="car-info">
                 <h3>BMW i4</h3>
-                <p>All-electric Gran Coupe delivering emission-free driving without compromising on comfort.</p>
+                <p>Gran Coupe elektrik mumpuni yang memberikan pengalaman berkendara bebas emisi tanpa mengorbankan kenyamanan premium.</p>
                 <div class="car-footer">
-                    <div class="price">$150<span>/day</span></div>
-                    <button class="btn-book">Book Now</button>
+                    <div class="price">Rp 2.500.000<span>/hari</span></div>
+                    <button class="btn-book">Boking</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <section id="about" class="about-section">
+        <div class="about-content">
+            <h2>Mengapa Memilih <span>JakksCar</span></h2>
+            <p>Kami menyediakan armada mobil premium dan eksklusif untuk kenyamanan berkendara Anda. Nikmati layanan kelas atas, kendaraan berasuransi penuh, dan pengalaman sewa yang mudah.</p>
+            <div class="features">
+                <div class="feature-box">
+                    <h3>🛡️ Asuransi Penuh</h3>
+                    <p>Setiap perjalanan Anda dilindungi dengan asuransi komprehensif premium.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>🕒 Dukungan 24/7</h3>
+                    <p>Tim bantuan kami tersedia setiap saat untuk membantu kendala Anda.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>✨ Kondisi Prima</h3>
+                    <p>Seluruh armada kami dirawat dengan sangat baik dan dibersihkan sebelum setiap penyewaan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>Jakks<span>Car</span></h2>
+                <p>Rasakan kemewahan dengan cara Anda sendiri. Destinasi rental mobil terbaik untuk kendaraan premium.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Tautan Cepat</h3>
+                <ul>
+                    <li><a href="#">Beranda</a></li>
+                    <li><a href="#fleet">Armada Kami</a></li>
+                    <li><a href="#about">Tentang Kami</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Hubungi Kami</h3>
+                <p>Email: support@jakkscar.com</p>
+                <p>Telepon: +62 812-3456-7890</p>
+                <p>Lokasi: Jakarta, Indonesia</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 JakksCar Rental. Semua hak cipta dilindungi.</p>
+        </div>
+    </footer>
 </body>
 
 </html>
