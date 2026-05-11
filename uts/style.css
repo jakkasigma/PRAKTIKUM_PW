@@ -894,6 +894,32 @@ body.page-leaving #movie-detail {
     padding: 30px 0 30px 5vw;
   }
 
+  .movie-page .movies-page-content {
+    padding-top: 68px;
+  }
+
+  .movie-page .movie-section {
+    padding: 24px 5vw 34px;
+  }
+
+  .movie-page .row-title {
+    margin-bottom: 16px;
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px 8px;
+    padding-right: 0;
+  }
+
+  .movie-grid .movie-card-sm {
+    min-width: 0;
+  }
+
+  .movie-grid .movie-card-sm:hover {
+    transform: none;
+  }
+
   .movie-card-sm {
     flex: 0 0 130px;
   }
@@ -904,9 +930,23 @@ body.page-leaving #movie-detail {
     height: 26px;
   }
 
+  .movie-grid .card-rank {
+    top: 4px;
+    left: 4px;
+    font-size: 0.85rem;
+    width: 18px;
+    height: 18px;
+  }
+
   .badge-sewa, .badge-beli {
     font-size: 0.6rem;
     padding: 3px 6px;
+  }
+
+  .movie-grid .badge-sewa,
+  .movie-grid .badge-beli {
+    font-size: 0.42rem;
+    padding: 2px 3px;
   }
 
   #footer {
@@ -957,6 +997,23 @@ body.page-leaving #movie-detail {
     flex: 0 0 115px;
   }
 
+  .movie-page .movies-page-content {
+    padding-top: 60px;
+  }
+
+  .movie-page .movie-section {
+    padding: 20px 4vw 30px;
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px 7px;
+  }
+
+  .movie-grid .card-info-sm {
+    padding-top: 7px;
+  }
+
   .hero-content {
     padding: 0 5vw 2.5rem;
   }
@@ -982,8 +1039,17 @@ body.page-leaving #movie-detail {
     font-size: 10px;
   }
 
+  .movie-grid .card-title-sm {
+    font-size: 8px;
+    line-height: 1.25;
+  }
+
   .card-rating {
     font-size: 9px;
+  }
+
+  .movie-grid .card-rating {
+    font-size: 7px;
   }
 
   .badge-sewa, .badge-beli {
@@ -1001,6 +1067,36 @@ body.page-leaving #movie-detail {
     left: 4px;
     right: auto;
     bottom: 4px;
+  }
+
+  .movie-grid .badge-sewa {
+    left: 3px;
+    bottom: 18px;
+  }
+
+  .movie-grid .badge-beli {
+    left: 3px;
+    right: auto;
+    bottom: 3px;
+  }
+}
+
+@media (max-width: 360px) {
+  .movie-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px 5px;
+  }
+
+  .movie-grid .badge-sewa,
+  .movie-grid .badge-beli {
+    font-size: 0.36rem;
+    padding: 1px 2px;
+  }
+
+  .movie-grid .card-rank {
+    font-size: 0.75rem;
+    width: 16px;
+    height: 16px;
   }
 }
 
