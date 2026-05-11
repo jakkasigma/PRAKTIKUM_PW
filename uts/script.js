@@ -250,11 +250,10 @@
     var trailerBtn = document.getElementById('btn-trailer');
     if (trailerBtn && m.trailer) {
       trailerBtn.style.display = '';
-      trailerBtn.onclick = function () {
-        window.open(m.trailer, '_blank');
-      };
+      trailerBtn.href = m.trailer;
     } else if (trailerBtn) {
       trailerBtn.style.display = 'none';
+      trailerBtn.removeAttribute('href');
     }
 
     detailEl.classList.add('active');
