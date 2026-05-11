@@ -700,9 +700,10 @@ body {
   }
 
   .nav-search {
-    order: 99;
-    margin-top: auto;
+    order: -1;
     width: 100%;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
   }
 
   #navbar {
