@@ -357,6 +357,23 @@
       });
     }
 
+    // Hamburger menu mobile
+    var hamburger = document.getElementById('hamburger');
+    var navCenter = document.querySelector('.nav-center');
+    if (hamburger && navCenter) {
+      hamburger.addEventListener('click', function() {
+        navCenter.classList.toggle('open');
+      });
+
+      // Tutup menu saat klik link
+      var mobileLinks = navCenter.querySelectorAll('.nav-links a');
+      mobileLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          navCenter.classList.remove('open');
+        });
+      });
+    }
+
     // Tombol kembali
     backBtn.addEventListener('click', closeDetail);
 
