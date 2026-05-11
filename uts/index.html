@@ -4,13 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jakka Space – Streaming Film</title>
+  <meta name="description" content="Jakka Space — platform streaming film dengan koleksi Trending, Marvel, dan Animasi. Sewa atau beli film favoritmu sekarang." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
   <link href="https://fonts.cdnfonts.com/css/peace-sans" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- Audio untuk intro -->
+  <audio id="intro-sound" src="asset/sound1.mp3" preload="auto"></audio>
+
+  <!-- Pre-Splash Screen -->
+  <div id="pre-splash">
+    <p id="splash-text">Put on your headset and listen.</p>
+    <button id="splash-start">START</button>
+  </div>
 
   <!-- Intro Overlay -->
   <div id="intro-overlay">
@@ -69,7 +79,7 @@
       />
       <div class="hero-content">
         <div class="hero-badge">FILM UNGGULAN</div>
-        <h1 class="hero-title" id="hero-title" style="font-size: clamp(3rem, 7vw, 6rem);"></h1>
+        <h1 class="hero-title" id="hero-title"></h1>
         <p class="hero-meta" id="hero-meta"></p>
         <p class="hero-desc" id="hero-desc"></p>
         <div class="hero-actions">

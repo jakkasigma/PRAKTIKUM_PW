@@ -19,6 +19,53 @@ body {
   overflow-x: hidden;
 }
 
+/* Pre-Splash Screen */
+#pre-splash {
+  position: fixed;
+  inset: 0;
+  background: #000000;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  transition: opacity 0.6s ease;
+}
+
+#pre-splash.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#splash-text {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+#splash-start {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  background: #000000;
+  border: none;
+  padding: 0.8rem 3rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+#splash-start:hover {
+  transform: translateY(-3px);
+  color: #000000;
+  background: #e0e0e0;
+}
+
 /* Intro Overlay */
 #intro-overlay {
   position: fixed;
@@ -31,6 +78,7 @@ body {
   /* fade-out mulai detik ke-3 */
   animation: overlayFadeOut 1.5s ease forwards;
   animation-delay: 3s;
+  animation-play-state: paused;
 }
 
 @keyframes overlayFadeOut {
@@ -59,6 +107,7 @@ body {
   transform: scaleX(0);
   animation: barSweep 0.6s ease forwards;
   animation-delay: 2s;
+  animation-play-state: paused;
 }
 
 #intro-logo::before {
@@ -89,6 +138,7 @@ body {
   transform: scale(10);
   animation: jakkaZoomOut 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: 0s;
+  animation-play-state: paused;
 }
 
 @keyframes jakkaZoomOut {
@@ -122,6 +172,7 @@ body {
   transform: translateX(100vw) rotate(0deg);
   animation: spaceRollIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   animation-delay: 0.8s;
+  animation-play-state: paused;
 }
 
 @keyframes spaceRollIn {
@@ -142,11 +193,22 @@ body {
   opacity: 0;
   animation: homeReveal 1.5s ease forwards;
   animation-delay: 3s;
+  animation-play-state: paused;
 }
 
 @keyframes homeReveal {
   from { opacity: 0; }
   to   { opacity: 1; }
+}
+
+/* Animasi aktif setelah klik START */
+.anim-started #intro-overlay,
+.anim-started #intro-logo::before,
+.anim-started #intro-logo::after,
+.anim-started #jakka-word,
+.anim-started .space-letter,
+.anim-started #homepage {
+  animation-play-state: running;
 }
 
 /* Navbar */
@@ -307,6 +369,86 @@ body {
   background: rgba(255,255,255,0.05);
 }
 
+/* Search Dropdown */
+.search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 6px;
+  background: rgba(15,15,15,0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  max-height: 320px;
+  overflow-y: auto;
+  z-index: 200;
+  display: none;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+}
+
+.search-dropdown.active {
+  display: block;
+}
+
+.search-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.search-item:last-child {
+  border-bottom: none;
+}
+
+.search-item:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.search-item-poster {
+  width: 36px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.search-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.search-item-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-item-meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 2px;
+}
+
+.search-empty {
+  padding: 20px 14px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.35);
+  font-style: italic;
+}
+
 /* Hero Section */
 #hero {
   position: relative;
@@ -369,7 +511,7 @@ body {
 
 .hero-title {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(4rem, 10vw, 8rem);
+  font-size: clamp(3rem, 7vw, 6rem);
   letter-spacing: 0.02em;
   text-transform: uppercase;
   line-height: 0.85;
@@ -444,37 +586,6 @@ body {
 .btn-info:hover {
   background: rgba(255,255,255,0.1);
   transform: translateY(-2px);
-}
-
-/* Section umum */
-.brutalist-section {
-  padding: 140px 4vw;
-  min-height: 100vh;
-  border-bottom: 1px solid rgba(255,255,255,0.12);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: #000;
-}
-
-/* Judul section besar */
-.section-title-big {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(5rem, 15vw, 12rem);
-  line-height: 0.85;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  color: #ffffff;
-}
-
-/* Deskripsi section */
-.section-desc {
-  font-family: 'Lora', serif;
-  font-style: italic;
-  font-size: clamp(1.1rem, 2vw, 1.6rem);
-  max-width: 750px;
-  margin: 30px 0;
-  color: #7a7a7a;
 }
 
 /* Baris film */
@@ -700,9 +811,10 @@ body {
   }
 
   .nav-search {
-    order: 99;
-    margin-top: auto;
+    order: -1;
     width: 100%;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
   }
 
   #navbar {
@@ -824,6 +936,23 @@ body {
 
   .card-rating {
     font-size: 9px;
+  }
+
+  .badge-sewa, .badge-beli {
+    font-size: 0.5rem;
+    padding: 2px 4px;
+    border-radius: 3px;
+  }
+
+  .badge-sewa {
+    left: 4px;
+    bottom: 24px;
+  }
+
+  .badge-beli {
+    left: 4px;
+    right: auto;
+    bottom: 4px;
   }
 }
 

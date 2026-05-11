@@ -44,7 +44,7 @@
       title:'PONYO',year:2008,genre:'Animasi, Fantasi, Adventure',duration:'1j 41m',rating:7.9,
       tagline:'"Welcome to a world where anything is possible."',
       synopsis:'Ponyo, seekor ikan emas ajaib, berteman dengan Sosuke, bocah berusia lima tahun. Ponyo ingin menjadi manusia, tapi keputusannya mengancam keseimbangan alam semesta.',
-      director:'Hayao Miyazaki',poster:'https://www.themoviedb.org/t/p/w1280/yp8vEZflGynlEylxEesbYasc06i.jpg',backdrop:'https://i.pinimg.com/1200x/36/56/d8/3656d8082ea225976d599da9dbe5fafd.jpg'
+      director:'Hayao Miyazaki',poster:'https://www.themoviedb.org/t/p/w1280/yp8vEZflGynlEylxEesbYasc06i.jpg',backdrop:'https://i.pinimg.com/736x/de/f2/ae/def2ae318728d8d06ab655e52c7faef4.jpg'
     },
     'Grave of the Fireflies (1988)': {
       title:'GRAVE OF THE FIREFLIES',year:1988,genre:'Animasi, Drama, Perang',duration:'1j 29m',rating:8.4,
@@ -126,7 +126,7 @@
       title:'SPIRITED AWAY',year:2001,genre:'Animasi, Fantasi, Adventure',duration:'2j 5m',rating:8.5,
       tagline:'"A journey beyond imagination."',
       synopsis:'Chihiro, gadis berusia 10 tahun, tersesat di dunia roh setelah orang tuanya berubah menjadi babi. Ia harus bekerja di pemandian milik penyihir Yubaba untuk membebaskan diri.',
-      director:'Hayao Miyazaki',poster:'https://image.tmdb.org/t/p/w300/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg',backdrop:'https://image.tmdb.org/t/p/w1280/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg'
+      director:'Hayao Miyazaki',poster:'https://image.tmdb.org/t/p/w300/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg',backdrop:'https://i.pinimg.com/736x/f3/34/d9/f334d9e833fe84fd6f596ec52015f04b.jpg'
     },
     'The Wild Robot (2024)': {
       title:'THE WILD ROBOT',year:2024,genre:'Animasi, Sci-Fi, Drama',duration:'1j 42m',rating:8.4,
@@ -232,9 +232,30 @@
   window.addEventListener('DOMContentLoaded', function () {
     homepage.style.visibility = 'visible';
 
-    setTimeout(function () {
-      overlay.style.display = 'none';
-    }, 4500);
+    // Pre-splash: tombol START
+    var preSplash = document.getElementById('pre-splash');
+    var splashBtn = document.getElementById('splash-start');
+    var introSound = document.getElementById('intro-sound');
+
+    splashBtn.addEventListener('click', function () {
+      // Mainkan sound
+      introSound.currentTime = 0;
+      introSound.play();
+
+      // Hilangkan pre-splash dengan fade
+      preSplash.classList.add('hidden');
+      setTimeout(function () {
+        preSplash.style.display = 'none';
+      }, 600);
+
+      // Mulai semua animasi intro
+      document.body.classList.add('anim-started');
+
+      // Hapus overlay setelah animasi selesai (4.5 detik)
+      setTimeout(function () {
+        overlay.style.display = 'none';
+      }, 4500);
+    });
 
     // Fungsi ganti konten hero
     function setHeroMovie(key) {
@@ -270,10 +291,12 @@
 
     // Daftar film untuk slideshow hero
     var heroMoviesList = [
+      'Spirited Away (2001)',
       'Chainsaw Man - The Movie: Reze Arc (2025)',
       'Ponyo (2008)',
       'Monster (2023)',
       'The Little Prince (2015)'
+
     ];
     var currentHeroIndex = 0;
 
@@ -296,9 +319,6 @@
       }, 300);
     }, 5000);
 
-
-
-    
     // Buat kartu film untuk setiap kategori
     for (var rowId in categories) {
       if (categories.hasOwnProperty(rowId)) {
@@ -353,6 +373,68 @@
           navLinks[0].classList.add('active');
         } else {
           navLinks[1].classList.add('active');
+        }
+      });
+    }
+
+    // Pencarian film dengan dropdown
+    var searchInput = document.getElementById('search-input');
+    if (searchInput) {
+      // Buat dropdown container
+      var dropdown = document.createElement('div');
+      dropdown.className = 'search-dropdown';
+      searchInput.parentElement.appendChild(dropdown);
+
+      searchInput.addEventListener('input', function () {
+        var query = searchInput.value.toLowerCase().trim();
+
+        // Kosongkan dan sembunyikan dropdown jika kosong
+        if (query === '') {
+          dropdown.innerHTML = '';
+          dropdown.classList.remove('active');
+          return;
+        }
+
+        // Cari film yang cocok
+        var results = [];
+        for (var key in movies) {
+          if (movies.hasOwnProperty(key)) {
+            if (key.toLowerCase().indexOf(query) !== -1 ||
+                movies[key].title.toLowerCase().indexOf(query) !== -1) {
+              results.push({ key: key, data: movies[key] });
+            }
+          }
+        }
+
+        // Render dropdown
+        dropdown.innerHTML = '';
+        if (results.length === 0) {
+          dropdown.innerHTML = '<div class="search-empty">Film tidak ditemukan</div>';
+        } else {
+          results.forEach(function (result) {
+            var item = document.createElement('div');
+            item.className = 'search-item';
+            item.innerHTML =
+              '<img class="search-item-poster" src="' + result.data.poster + '" alt="' + result.data.title + '" />' +
+              '<div class="search-item-info">' +
+                '<div class="search-item-title">' + result.data.title + '</div>' +
+                '<div class="search-item-meta">' + result.data.year + ' · ' + result.data.genre + ' · ⭐ ' + result.data.rating + '</div>' +
+              '</div>';
+            item.addEventListener('click', function () {
+              openDetail(result.key);
+              dropdown.classList.remove('active');
+              searchInput.value = '';
+            });
+            dropdown.appendChild(item);
+          });
+        }
+        dropdown.classList.add('active');
+      });
+
+      // Tutup dropdown saat klik di luar
+      document.addEventListener('click', function (e) {
+        if (!searchInput.parentElement.contains(e.target)) {
+          dropdown.classList.remove('active');
         }
       });
     }
