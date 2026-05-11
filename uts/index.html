@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jakka Space – Streaming Film</title>
-  <meta name="description" content="Jakka Space — platform streaming film dengan koleksi Trending, Marvel, dan Animasi. Sewa atau beli film favoritmu sekarang." />
+  <title>Jakka Space - Streaming Film</title>
+  <meta name="description" content="Jakka Space - platform streaming film dengan koleksi Trending, Marvel, dan Animasi." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
@@ -13,16 +13,13 @@
 </head>
 <body>
 
-  <!-- Audio untuk intro -->
   <audio id="intro-sound" src="asset/sound1.mp3" preload="auto"></audio>
 
-  <!-- Pre-Splash Screen -->
   <div id="pre-splash">
     <p id="splash-text">Put on your headset and listen.</p>
     <button id="splash-start">START</button>
   </div>
 
-  <!-- Intro Overlay -->
   <div id="intro-overlay">
     <div id="intro-logo">
       <div id="jakka-word">JAKKA</div>
@@ -36,10 +33,7 @@
     </div>
   </div>
 
-  <!-- Homepage -->
   <div id="homepage">
-
-    <!-- Navbar -->
     <nav id="navbar">
       <div class="nav-logo">
         <span class="nav-jakka">JAKKA</span>
@@ -53,8 +47,8 @@
       </div>
       <div class="nav-center">
         <ul class="nav-links" id="nav-links">
-          <li><a href="#hero" class="active">HOME</a></li>
-          <li><a href="#trending">MOVIES</a></li>
+          <li><a href="index.html" class="active">HOME</a></li>
+          <li><a href="movie.html">ALL MOVIE</a></li>
         </ul>
         <div class="nav-search">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
@@ -68,109 +62,41 @@
       </button>
     </nav>
 
-    <!-- Hero Section -->
     <section id="hero">
       <div class="hero-overlay"></div>
-      <img
-        src=""
-        alt="Hero Background"
-        class="hero-bg"
-        id="hero-bg"
-      />
+      <img src="" alt="Hero Background" class="hero-bg" id="hero-bg" />
       <div class="hero-content">
         <div class="hero-badge">FILM UNGGULAN</div>
         <h1 class="hero-title" id="hero-title"></h1>
         <p class="hero-meta" id="hero-meta"></p>
         <p class="hero-desc" id="hero-desc"></p>
         <div class="hero-actions">
-          <button class="btn-rent">▶ &nbsp;Sewa <span class="price-tag">Rp5k</span></button>
-          <button class="btn-info" id="hero-info-btn">ⓘ &nbsp;Info Film</button>
+          <button class="btn-rent">Play</button>
+          <button class="btn-info" id="hero-info-btn">Info Film</button>
         </div>
       </div>
     </section>
 
-    <!-- Kategori Trending -->
     <section id="trending" class="movie-section">
       <h2 class="row-title">Lagi Trending Sekarang</h2>
-      <div class="movie-row" id="row-trending">
-        <!-- Injected by JS -->
-      </div>
+      <div class="movie-row" id="row-trending"></div>
     </section>
 
-    <!-- Kategori Marvel -->
     <section id="marvel" class="movie-section">
       <h2 class="row-title">Film Marvel</h2>
-      <div class="movie-row" id="row-marvel">
-        <!-- Injected by JS -->
-      </div>
+      <div class="movie-row" id="row-marvel"></div>
     </section>
 
-    <!-- Kategori Animasi -->
     <section id="animasi" class="movie-section">
       <h2 class="row-title">Film Animasi</h2>
-      <div class="movie-row" id="row-animasi">
-        <!-- Injected by JS -->
-      </div>
+      <div class="movie-row" id="row-animasi"></div>
     </section>
-    <!-- Footer -->
+
     <footer id="footer">
-      <div>© 2026 JAKKA SPACE</div>
-      <div id="clock">YOGYAKARTA — 00:00</div>
+      <div>&copy; 2026 JAKKA SPACE</div>
+      <div id="clock">YOGYAKARTA - 00:00</div>
       <div>STAY CURIOUS / STAY WATCHING</div>
     </footer>
-
-  </div>
-
-  <!-- Detail Film Overlay -->
-  <div id="movie-detail" class="detail-overlay">
-    <button id="detail-back" class="detail-back" aria-label="Kembali">← KEMBALI</button>
-
-    <div class="detail-container">
-      <!-- Backdrop -->
-      <div class="detail-backdrop" id="detail-backdrop"></div>
-
-      <div class="detail-body">
-        <!-- Poster -->
-        <div class="detail-poster-wrap">
-          <img id="detail-poster" class="detail-poster" src="" alt="Poster" />
-        </div>
-
-        <!-- Info film -->
-        <div class="detail-info">
-          <h1 class="detail-title" id="detail-title"></h1>
-          <div class="detail-meta" id="detail-meta"></div>
-
-          <!-- Rating -->
-          <div class="detail-score-row">
-            <div class="detail-star-rating">
-              <span class="star-icon">⭐</span>
-              <span class="score-text" id="score-text"></span>
-            </div>
-            <span class="score-label">Rating</span>
-          </div>
-
-          <!-- Tombol aksi -->
-          <div class="detail-actions">
-            <button class="btn-sewa-detail" id="detail-sewa">SEWA Rp5K</button>
-            <button class="btn-beli-detail" id="detail-beli">BELI Rp15K</button>
-            <a class="btn-trailer" id="btn-trailer" href="#" target="_blank" rel="noopener noreferrer">▶ &nbsp;Play Trailer</a>
-          </div>
-
-          <!-- Tagline -->
-          <p class="detail-tagline" id="detail-tagline"></p>
-
-          <!-- Sinopsis -->
-          <h3 class="detail-section-label">Kilasan Singkat</h3>
-          <p class="detail-synopsis" id="detail-synopsis"></p>
-
-          <!-- Sutradara -->
-          <div class="detail-crew">
-            <p class="crew-name" id="detail-director"></p>
-            <p class="crew-role">Director, Screenplay</p>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
   <script src="script.js"></script>

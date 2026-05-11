@@ -19,6 +19,28 @@ body {
   overflow-x: hidden;
 }
 
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9500;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+}
+
+body.page-leaving::after {
+  opacity: 0.35;
+}
+
+body.page-leaving #homepage,
+body.page-leaving .movies-page-content,
+body.page-leaving #movie-detail {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
 /* Pre-Splash Screen */
 #pre-splash {
   position: fixed;
@@ -194,6 +216,7 @@ body {
   animation: homeReveal 1.5s ease forwards;
   animation-delay: 3s;
   animation-play-state: paused;
+  transition: opacity 0.22s ease, transform 0.22s ease;
 }
 
 @keyframes homeReveal {
@@ -565,12 +588,6 @@ body {
   transform: translateY(-2px);
 }
 
-.price-tag {
-  background: rgba(0,0,0,0.15);
-  padding: 0.15rem 0.5rem;
-  font-size: 0.85rem;
-}
-
 .btn-info {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.1rem;
@@ -589,10 +606,41 @@ body {
 }
 
 /* Baris film */
+.movies-page-content {
+  padding-top: 92px;
+  background: #000;
+  min-height: 100vh;
+  animation: pageEnter 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .movie-section {
   padding: 40px 0 40px 4vw;
   border-bottom: 1px solid rgba(255,255,255,0.08);
   background: #000;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 28px 16px;
+  padding-right: 4vw;
+}
+
+.movie-grid .movie-card-sm {
+  width: 100%;
+  flex: initial;
 }
 
 .row-title {

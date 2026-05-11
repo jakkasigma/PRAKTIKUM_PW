@@ -229,10 +229,44 @@
   var homepage   = document.getElementById('homepage');
   var detailEl   = document.getElementById('movie-detail');
   var backBtn    = document.getElementById('detail-back');
+  var isDetailPage = document.body.classList.contains('detail-page');
+
+  function detailUrl(key) {
+    return 'detail.html?movie=' + encodeURIComponent(key);
+  }
+
+  function goToDetail(key) {
+    if (movies[key]) {
+      navigateWithTransition(detailUrl(key));
+    }
+  }
+
+  function navigateWithTransition(url) {
+    if (!url || url.charAt(0) === '#') return;
+
+    document.body.classList.add('page-leaving');
+    setTimeout(function () {
+      window.location.href = url;
+    }, 220);
+  }
+
+  function setupSmoothPageLinks() {
+    var pageLinks = document.querySelectorAll('a[href$=".html"], a[href*=".html#"]');
+
+    pageLinks.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        var href = link.getAttribute('href');
+        if (!href || href === window.location.pathname.split('/').pop()) return;
+
+        e.preventDefault();
+        navigateWithTransition(href);
+      });
+    });
+  }
 
   // Buka halaman detail film
   function openDetail(key) {
-    var m = movies[key];
+    var m = movies[key] || movies['Monster (2023)'];
     if (!m) return;
 
     document.getElementById('detail-poster').src = m.poster;
@@ -262,20 +296,39 @@
 
   // Tutup halaman detail
   function closeDetail() {
-    detailEl.classList.remove('active');
-    document.body.style.overflow = '';
+    navigateWithTransition('movie.html');
   }
 
   // Inisialisasi setelah DOM siap
   window.addEventListener('DOMContentLoaded', function () {
-    homepage.style.visibility = 'visible';
+    var shouldSkipIntro = homepage && (
+      sessionStorage.getItem('jakkaIntroSeen') === '1'
+    );
+    if (!homepage) {
+      sessionStorage.setItem('jakkaIntroSeen', '1');
+    }
+
+    if (homepage) {
+      homepage.style.visibility = 'visible';
+    }
 
     // Pre-splash: tombol START
     var preSplash = document.getElementById('pre-splash');
     var splashBtn = document.getElementById('splash-start');
     var introSound = document.getElementById('intro-sound');
 
+    if (shouldSkipIntro) {
+      if (preSplash) preSplash.style.display = 'none';
+      if (overlay) overlay.style.display = 'none';
+      if (homepage) {
+        homepage.style.opacity = '1';
+        homepage.style.animation = 'none';
+      }
+      document.body.classList.add('anim-started');
+    } else if (splashBtn && preSplash && introSound && overlay) {
     splashBtn.addEventListener('click', function () {
+      sessionStorage.setItem('jakkaIntroSeen', '1');
+
       // Mainkan sound
       introSound.currentTime = 0;
       introSound.play();
@@ -294,11 +347,13 @@
         overlay.style.display = 'none';
       }, 4500);
     });
+    }
 
     // Fungsi ganti konten hero
     function setHeroMovie(key) {
       var m = movies[key];
       if (!m) return;
+      if (!document.getElementById('hero-bg')) return;
       
       document.getElementById('hero-bg').src = m.backdrop;
       
@@ -321,7 +376,7 @@
         var newBtn = heroInfoBtn.cloneNode(true);
         heroInfoBtn.parentNode.replaceChild(newBtn, heroInfoBtn);
         newBtn.addEventListener('click', function () {
-          openDetail(key);
+          goToDetail(key);
         });
       }
     }
@@ -339,12 +394,14 @@
     var currentHeroIndex = 0;
 
     // Tampilkan film pertama
+    if (document.getElementById('hero')) {
     setHeroMovie(heroMoviesList[currentHeroIndex]);
 
     // Ganti hero otomatis setiap 5 detik dengan efek fade
     setInterval(function() {
       var heroBg = document.getElementById('hero-bg');
       var heroContent = document.querySelector('.hero-content');
+      if (!heroBg || !heroContent) return;
 
       heroBg.classList.add('hero-fade-out');
       heroContent.classList.add('hero-fade-out');
@@ -356,6 +413,7 @@
         heroContent.classList.remove('hero-fade-out');
       }, 300);
     }, 5000);
+    }
 
     // Buat kartu film untuk setiap kategori
     for (var rowId in categories) {
@@ -386,34 +444,38 @@
       }
     }
 
+    var allMoviesGrid = document.getElementById('all-movies-grid');
+    if (allMoviesGrid) {
+      var allHtml = '';
+      var allMovieKeys = Object.keys(movies);
+      allMovieKeys.forEach(function (movieKey, index) {
+        var m = movies[movieKey];
+        if (m) {
+          allHtml += '<div class="movie-card-sm" data-key="' + movieKey + '">' +
+                    '<div class="card-rank">' + (index + 1) + '</div>' +
+                    '<div class="card-poster-wrap">' +
+                      '<img src="' + m.poster + '" alt="' + m.title + '" />' +
+                      '<div class="badge-sewa">SEWA 5K</div>' +
+                      '<div class="badge-beli">BELI 15K</div>' +
+                    '</div>' +
+                    '<div class="card-info-sm">' +
+                      '<span class="card-rating">&#9733; ' + m.rating + '</span>' +
+                      '<p class="card-title-sm">' + movieKey + '</p>' +
+                    '</div>' +
+                  '</div>';
+        }
+      });
+      allMoviesGrid.innerHTML = allHtml;
+    }
+
     // Klik kartu film
     var cards = document.querySelectorAll('.movie-card-sm');
     cards.forEach(function (card) {
       card.addEventListener('click', function () {
         var key = card.getAttribute('data-key');
-        if (key) openDetail(key);
+        if (key) goToDetail(key);
       });
     });
-
-    // Navbar aktif saat scroll
-    var navLinks = document.querySelectorAll('.nav-links a');
-    var heroSection = document.getElementById('hero');
-    if (navLinks.length >= 2 && heroSection) {
-      window.addEventListener('scroll', function() {
-        var scrollPos = window.scrollY || document.documentElement.scrollTop;
-        var heroBottom = heroSection.offsetHeight - 150; 
-        
-        navLinks.forEach(function(link) {
-          link.classList.remove('active');
-        });
-        
-        if (scrollPos < heroBottom) {
-          navLinks[0].classList.add('active');
-        } else {
-          navLinks[1].classList.add('active');
-        }
-      });
-    }
 
     // Pencarian film dengan dropdown
     var searchInput = document.getElementById('search-input');
@@ -459,7 +521,7 @@
                 '<div class="search-item-meta">' + result.data.year + ' · ' + result.data.genre + ' · ⭐ ' + result.data.rating + '</div>' +
               '</div>';
             item.addEventListener('click', function () {
-              openDetail(result.key);
+              goToDetail(result.key);
               dropdown.classList.remove('active');
               searchInput.value = '';
             });
@@ -494,13 +556,22 @@
       });
     }
 
+    setupSmoothPageLinks();
+
     // Tombol kembali
-    backBtn.addEventListener('click', closeDetail);
+    if (backBtn) {
+      backBtn.addEventListener('click', closeDetail);
+    }
 
     // Tutup dengan tombol ESC
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && detailEl.classList.contains('active')) closeDetail();
+      if (e.key === 'Escape' && detailEl && detailEl.classList.contains('active')) closeDetail();
     });
+
+    if (isDetailPage) {
+      var params = new URLSearchParams(window.location.search);
+      openDetail(params.get('movie') || 'Monster (2023)');
+    }
 
     // Jam live di footer
     var clockEl = document.getElementById('clock');

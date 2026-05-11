@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movies - Jakka Space</title>
+  <meta name="description" content="Daftar semua film Jakka Space." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.cdnfonts.com/css/peace-sans" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="movie-page anim-started">
+  <nav id="navbar">
+    <div class="nav-logo">
+      <span class="nav-jakka">JAKKA</span>
+      <span class="nav-space-wrap">
+        <span class="nav-letter" style="color:#40E0D0;">S</span>
+        <span class="nav-letter" style="color:#FF0000;">P</span>
+        <span class="nav-letter" style="color:#FF69B4;">A</span>
+        <span class="nav-letter" style="color:#00FF00;">C</span>
+        <span class="nav-letter" style="color:#8A2BE2;">E</span>
+      </span>
+    </div>
+    <div class="nav-center">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="movie.html" class="active">ALL MOVIE</a></li>
+      </ul>
+      <div class="nav-search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" placeholder="Cari Film..." class="search-input" id="search-input" />
+      </div>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </nav>
+
+  <main class="movies-page-content">
+    <section class="movie-section">
+      <h1 class="row-title">Semua Film</h1>
+      <div class="movie-grid" id="all-movies-grid"></div>
+    </section>
+  </main>
+
+  <footer id="footer">
+    <div>&copy; 2026 JAKKA SPACE</div>
+    <div id="clock">YOGYAKARTA - 00:00</div>
+    <div>STAY CURIOUS / STAY WATCHING</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

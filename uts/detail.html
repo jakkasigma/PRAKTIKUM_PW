@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detail Film - Jakka Space</title>
+  <meta name="description" content="Deskripsi film Jakka Space." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.cdnfonts.com/css/peace-sans" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="detail-page anim-started">
+  <div id="movie-detail" class="detail-overlay active">
+    <button id="detail-back" class="detail-back" aria-label="Kembali">KEMBALI</button>
+
+    <div class="detail-container">
+      <div class="detail-backdrop" id="detail-backdrop"></div>
+
+      <div class="detail-body">
+        <div class="detail-poster-wrap">
+          <img id="detail-poster" class="detail-poster" src="" alt="Poster" />
+        </div>
+
+        <div class="detail-info">
+          <h1 class="detail-title" id="detail-title"></h1>
+          <div class="detail-meta" id="detail-meta"></div>
+
+          <div class="detail-score-row">
+            <div class="detail-star-rating">
+              <span class="star-icon">&#9733;</span>
+              <span class="score-text" id="score-text"></span>
+            </div>
+            <span class="score-label">Rating</span>
+          </div>
+
+          <div class="detail-actions">
+            <button class="btn-sewa-detail" id="detail-sewa">SEWA Rp5K</button>
+            <button class="btn-beli-detail" id="detail-beli">BELI Rp15K</button>
+            <a class="btn-trailer" id="btn-trailer" href="#" target="_blank" rel="noopener noreferrer">Play Trailer</a>
+          </div>
+
+          <p class="detail-tagline" id="detail-tagline"></p>
+
+          <h3 class="detail-section-label">Kilasan Singkat</h3>
+          <p class="detail-synopsis" id="detail-synopsis"></p>
+
+          <div class="detail-crew">
+            <p class="crew-name" id="detail-director"></p>
+            <p class="crew-role">Director, Screenplay</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
