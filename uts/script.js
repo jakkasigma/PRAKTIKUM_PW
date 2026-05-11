@@ -366,7 +366,7 @@
       }
 
       document.getElementById('hero-meta').innerHTML = 
-        m.year + ' &nbsp;·&nbsp; ' + m.genre + ' &nbsp;·&nbsp; ' + m.duration + ' &nbsp;·&nbsp; ⭐ ' + m.rating;
+        m.year + ' &nbsp;·&nbsp; ' + m.genre + ' &nbsp;·&nbsp; ' + m.duration + ' &nbsp;·&nbsp; &#9733; ' + m.rating;
       
       document.getElementById('hero-desc').textContent = m.synopsis;
       
@@ -433,7 +433,7 @@
                           '<div class="badge-beli">BELI 15K</div>' +
                         '</div>' +
                         '<div class="card-info-sm">' +
-                          '<span class="card-rating">⭐ ' + m.rating + '</span>' +
+                          '<span class="card-rating">&#9733; ' + m.rating + '</span>' +
                           '<p class="card-title-sm">' + displayTitle + '</p>' +
                         '</div>' +
                       '</div>';
@@ -518,7 +518,7 @@
               '<img class="search-item-poster" src="' + result.data.poster + '" alt="' + result.data.title + '" />' +
               '<div class="search-item-info">' +
                 '<div class="search-item-title">' + result.data.title + '</div>' +
-                '<div class="search-item-meta">' + result.data.year + ' · ' + result.data.genre + ' · ⭐ ' + result.data.rating + '</div>' +
+                '<div class="search-item-meta">' + result.data.year + ' &middot; ' + result.data.genre + ' &middot; &#9733; ' + result.data.rating + '</div>' +
               '</div>';
             item.addEventListener('click', function () {
               goToDetail(result.key);
