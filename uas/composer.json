@@ -1,0 +1,8 @@
+{
+    "name": "uas/tournament-bracket",
+    "description": "Tournament Bracket System - UAS Praktikum Pemrograman Web",
+    "license": "proprietary",
+    "require": {
+        "dompdf/dompdf": "^3.1"
+    }
+}
